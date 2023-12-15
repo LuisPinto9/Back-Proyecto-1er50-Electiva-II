@@ -5,12 +5,10 @@ exports.save = async (req, res) => {
   const { email, celphone } = req.body;
   if (!validateEmail(email) || !validateCelPhone(celphone)) {
     /**En caso que no pase el test */
-    res
-      .status(400)
-      .json({
-        state: false,
-        error: `Los datos ingresados no cumplen con los requerimientos`,
-      });
+    res.status(400).json({
+      state: false,
+      error: `Los datos ingresados no cumplen con los requerimientos`,
+    });
   } else {
     const newClient = new Client(req.body);
     try {
@@ -23,31 +21,34 @@ exports.save = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-    const { id } = req.params;
-    const updateInformation = req.body;
-  
-    const hasEmail = updateInformation.email !== undefined;
-    const hasPhone = updateInformation.celphone !== undefined;
-  
-    if (hasEmail || hasPhone) {
-      let errorMessage = null;
-      if (hasPhone && !validateCelPhone(updateInformation.celphone)) {
-        errorMessage = "El teléfono no cumple con los requerimientos";
-      } else if (hasEmail && !validateEmail(updateInformation.email)) {
-        errorMessage = "El email no cumple con los requerimientos";
-      }
-      if (errorMessage) {
-        return res.status(400).json({ state: false, error: errorMessage });
-      }
+  const { id } = req.params;
+  const updateInformation = req.body;
+
+  const hasEmail = updateInformation.email !== undefined;
+  const hasPhone = updateInformation.celphone !== undefined;
+
+  if (hasEmail || hasPhone) {
+    let errorMessage = null;
+    if (hasPhone && !validateCelPhone(updateInformation.celphone)) {
+      errorMessage = "El teléfono no cumple con los requerimientos";
+    } else if (hasEmail && !validateEmail(updateInformation.email)) {
+      errorMessage = "El email no cumple con los requerimientos";
     }
-  
-    try {
-      const data = await Client.updateOne({ id: id }, { $set: updateInformation });
-      res.status(200).json({ state: true, data: data });
-    } catch (err) {
-      res.status(500).json({ state: false, error: err.message });
+    if (errorMessage) {
+      return res.status(400).json({ state: false, error: errorMessage });
     }
-  };
+  }
+
+  try {
+    const data = await Client.updateOne(
+      { id: id },
+      { $set: updateInformation }
+    );
+    res.status(200).json({ state: true, data: data });
+  } catch (err) {
+    res.status(500).json({ state: false, error: err.message });
+  }
+};
 
 exports.findAll = async (req, res) => {
   try {
