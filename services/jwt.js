@@ -3,7 +3,7 @@ const jwt = require("jwt-simple")
 const moment = require("moment")
 
 //clave secreta
-const secret = "CLAVE_SECRETA_AwIE_78826913";
+const secret = "CLAVE_SECRETA_PELUQUERIA_78826913";
 
 //crear funcion para generar token
 const createToken = (user)=>{
