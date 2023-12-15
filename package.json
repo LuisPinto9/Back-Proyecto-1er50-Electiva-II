@@ -10,8 +10,11 @@
   "author": "Robinson Aguilar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.29.4",
     "mongoose": "^8.0.2"
   },
   "devDependencies": {
