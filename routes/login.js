@@ -1,5 +1,5 @@
 const routes = require('express').Router();
-const {validate} = require('../controllers/clientController')
+const {validate} = require('../controllers/loginController')
 
 routes.post('/',validate);
 
