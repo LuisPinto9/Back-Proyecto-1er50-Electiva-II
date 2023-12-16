@@ -46,7 +46,7 @@ exports.update = async (req, res) => {
 
 exports.findAll = async (req, res) => {
   try {
-    const data = await User.find({}).populate("reservations");
+    const data = await User.find({});
     res.status(200).json({ state: true, data: data });
   } catch (err) {
     res.status(500).json({ state: false, error: err.message });
@@ -66,7 +66,7 @@ exports.findById = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
-    const data = await User.findByIdAndDelete(id)
+    const data = await User.findByIdAndDelete(id);
     res.status(200).json({ state: true, data: data });
   } catch (err) {
     res.status(500).json({ state: false, error: err.message });
