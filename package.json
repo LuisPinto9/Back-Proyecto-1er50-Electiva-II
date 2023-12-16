@@ -1,16 +1,17 @@
 {
-  "name": "tallerapirest",
+  "name": "apirestful-proyecto",
   "version": "1.0.0",
-  "description": "workshop 2",
+  "description": "proyecto",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
-  "author": "Robinson Aguilar",
+  "author": "Robinson Aguilar, Diana Diaz, Luis Pinto",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jwt-simple": "^0.5.6",

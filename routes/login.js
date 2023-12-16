@@ -1,6 +1,6 @@
-const routes = require('express').Router();
-const {validate} = require('../controllers/loginController')
+const routes = require("express").Router();
+const { validate } = require("../controllers/loginController");
 
-routes.post('/',validate);
+routes.post("/", validate);
 
-module.exports = routes
+module.exports = routes;
