@@ -1,5 +1,13 @@
 const routes = require("express").Router();
-const { validate, findAll, findById, save, deleteUser, update } = require("../controllers/loginController");
+const {
+  validate,
+  findAll,
+  findById,
+  save,
+  deleteUser,
+  update,
+} = require("../controllers/loginController");
+const check = require("../middleware/auth");
 
 routes.get("/", check.auth, findAll);
 routes.get("/:id", check.auth, findById);
