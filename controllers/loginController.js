@@ -7,14 +7,14 @@ exports.validate = async (req, res) => {
     username: username,
     password: password,
   });
-  const token = jwt.createToken(user)
-  if (!user) {
+  if (Object.values(user).length < 1) {
     res.status(404).json({
       state: false,
       error: `Usuario no encontrado.`
     });
   } else {
     try {
+      const token = jwt.createToken(user)
       res.status(200).json({ state: true, data: "Usuario encontrado",token });
     } catch (err) {
       res.status(500).json({ state: false, error: err.message });
