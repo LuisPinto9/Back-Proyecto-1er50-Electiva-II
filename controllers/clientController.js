@@ -62,7 +62,7 @@ exports.findAll = async (req, res) => {
 exports.findById = async (req, res) => {
   const { id } = req.params;
   try {
-    const data = await Client.findById({ id: id });
+    const data = await Client.findById(id);
     res.status(200).json({ state: true, data: data });
   } catch (err) {
     res.status(500).json({ state: false, error: err.message });
