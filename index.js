@@ -10,7 +10,7 @@ const app = express();
 app.set("PORT", process.env.PORT);
 
 //middelware (use)
-app.use(cors({ origin: "*" }));
+app.use(cors());
 app.use(express.json());
 app.use("/client", require("./routes/clients"));
 app.use("/reservation", require("./routes/reservations"));
