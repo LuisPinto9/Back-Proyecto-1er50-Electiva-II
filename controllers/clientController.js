@@ -1,4 +1,5 @@
 const Client = require("../models/model-client");
+const Reservation = require("../models/model-reservation");
 
 exports.save = async (req, res) => {
   /**Validaciones*/
@@ -82,8 +83,10 @@ exports.findId = async (req, res) => {
 exports.deleteClient = async (req, res) => {
   const { id } = req.params;
   try {
-    const data = await Client.deleteOne({ id: id });
-    res.status(200).json({ state: true, data: data });
+    const data = await Client.deleteOne({ _id: id });
+
+    const data2 = await Reservation.deleteMany({ 'client._id': id });
+    res.status(200).json({ state: true, data: data, data2: data2});
   } catch (err) {
     res.status(500).json({ state: false, error: err.message });
   }
