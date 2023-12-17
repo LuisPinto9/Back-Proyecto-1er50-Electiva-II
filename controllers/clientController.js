@@ -85,7 +85,7 @@ exports.deleteClient = async (req, res) => {
   try {
     const data = await Client.deleteOne({ _id: id });
 
-    const data2 = await Reservation.deleteMany({ 'client._id': id });
+    const data2 = await Reservation.deleteMany({ 'client': id });
     res.status(200).json({ state: true, data: data, data2: data2});
   } catch (err) {
     res.status(500).json({ state: false, error: err.message });
