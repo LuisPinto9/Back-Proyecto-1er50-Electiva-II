@@ -37,7 +37,7 @@ exports.update = async (req, res) => {
   const updateInformation = req.body;
 
   try {
-    const data = await User.updateOne({ id: id }, { $set: updateInformation });
+    const data = await User.updateOne({ _id: id }, { $set: updateInformation });
     res.status(200).json({ state: true, data: data });
   } catch (err) {
     res.status(500).json({ state: false, error: err.message });
