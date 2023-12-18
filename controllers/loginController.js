@@ -41,8 +41,8 @@ exports.save = async (req, res) => {
     }
   } else {
     return res
-      .status(500)
-      .json({ state: false, error: "El usuario ya existe" });
+      .status(409)
+      .json({ state: false, error: "El usuario ya existe." });
   }
 };
 
