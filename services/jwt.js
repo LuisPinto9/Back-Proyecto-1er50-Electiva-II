@@ -7,7 +7,6 @@ const secret = "CLAVE_SECRETA_PELUQUERIA_78826913";
 
 //crear funcion para generar token
 const createToken = (user) => {
-  console.log(user);
   const payload = {
     name: user.username,
     password: user.password,
